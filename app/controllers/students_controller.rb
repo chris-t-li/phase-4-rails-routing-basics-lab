@@ -1,0 +1,16 @@
+class StudentsController < ApplicationController
+    def index
+        students = Student.all
+        render json: students
+    end
+
+    def grades
+        grades = Student.order("grade DESC")
+        render json: grades
+    end
+
+    def highest_grade
+        highest_student = Student.order("grade DESC")[0]
+        render json: highest_student
+    end
+end
